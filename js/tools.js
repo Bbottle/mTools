@@ -118,3 +118,26 @@ mTools.prototype.off = function(type, handler){
     }
 }
 //DOM加载
+
+
+//获取值
+mTools.prototype.val = function(value){
+    if(arguments.length == 0){
+        var val = [];
+        for(var i=0;i<this.elements.length;i++){
+            val.push(this.elements[i].value);
+        }
+        return val;
+    }else if(arguments.length ==1){
+        for(var i=0;i<this.elements.length;i++){
+            this.elements[i].value = value;
+        }
+        return this;
+    }
+}
+
+//添加类
+mTools.prototype.addClass = function(){
+
+
+}
