@@ -2,8 +2,8 @@
  * Created by Nunn on 14-4-8.
  */
 var mTools = function(element){
-        //创建一个对象并且反回
-        return new mTools.fn.init(element);
+    //创建一个对象并且反回
+    return new mTools.fn.init(element);
 
 }
 var $ =mTools;
@@ -87,7 +87,7 @@ mTools.prototype.css = function(attr, value){
         }
     }else if(arguments.length == 2){
         for(var i=0;i<this.elements.length;i++){
-                this.elements[i].style[attr] = value;
+            this.elements[i].style[attr] = value;
         }
     }
     return this;
@@ -128,7 +128,7 @@ mTools.prototype.val = function(value){
             val.push(this.elements[i].value);
         }
         return val;
-    }else if(arguments.length ==1){
+    }else if(arguments.length == 1){
         for(var i=0;i<this.elements.length;i++){
             this.elements[i].value = value;
         }
@@ -139,5 +139,93 @@ mTools.prototype.val = function(value){
 //添加类
 mTools.prototype.addClass = function(){
 
+}
 
+
+//更改文本
+mTools.prototype.html = function(value){
+    var html = [];
+    if(arguments.length == 0){
+        for(var i=0;i<this.elements.length;i++){
+            html.push(this.elements[i].innerHTML);
+        }
+        return html;
+    }else if(arguments.length ==1){
+        for(var i=0;i<this.elements.length;i++){
+            this.elements[i].innerHTML = value;
+        }
+        return this;
+    }
+}
+//求和
+mTools.prototype.sum = function(){
+    var arr = this.val();
+    var sum =0;
+    for(var i=0;i<arr.length;i++){
+        if(arr[i] != "" && arr[i] != null){
+            sum += parseInt(arr[i]);
+        }
+    }
+    return sum;
+}
+//获取元素子节点，只获取元素节点
+mTools.prototype.child = function(element){
+    var elearr =[];
+
+    for(var i=0;i<this.elements.length;i++){
+
+        for(var j=0;j<this.elements[i].childNodes.length;j++){
+            if(this.elements[i].childNodes[j].nodeType == 1){
+                elearr.push(this.elements[i].childNodes[j]);
+            }
+        }
+
+    }
+    console.log(elearr);
+//    for(k in elearr){
+//        console.log(elearr[k]);
+//    }
+    //this.elements = elearr;
+    //return this;
+}
+
+/*数量*/
+mTools.size =  function(){
+    return this.elements.length;
+}
+/*隐藏与显示*/
+mTools.prototype.hide = function(){
+    for(var i=0;i<this.elements.length;i++){
+        this.elements[i].style.display = "none";
+    }
+}
+mTools.prototype.show = function(){
+    for(var i=0;i<this.elements.length;i++){
+        this.elements[i].style.display = "block";
+    }
+}
+mTools.prototype.toggle = function(){
+    for(var i =0;i < this.elements.length; i++){
+        this.elements[i].style.display = this.elements[i].style.display == "none" ? "block" : "none";
+    }
+}
+
+/*设置html*/
+mTools.prototype.html = function(text){
+    if(arguments.length == 0){
+        if(this.elements.length == 1){
+            return this.elements[0].innerHTML;
+        }else{
+            var arr = [];
+            for(var i=0;i<this.elements.length;i++){
+                arr.push(this.elements[i].innerHTML);
+            }
+            return arr;
+        }
+    }else{
+        for(var i=0;i<this.elements.length;i++){
+            this.elements[i].innerHTML = text;
+        }
+        return this;
+    }
 }
