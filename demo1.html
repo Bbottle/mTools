@@ -15,10 +15,20 @@
 <label>高度</label><input class="txt" type="text" id="boxheight"/><input id="heightbut" class="but" type="button" value="改变"/>
 <label for="">宽度</label><input class="txt" type="text"/><input class="but" type="button" value="改变"/>
 <label for="">可见度</label><input class="txt" type="text"/><input class="but" type="button" value="改变"/>
+
+<div class="div1">
+    <div class="div2">22222222</div>
+    <div class="div2">33333333</div>
+    <div class="div2">44444444</div>
+</div>
+
+
 <Script>
-    $("#heightbut").on("click", function(){
+    $("#box").on("mouseover", function(){
         //document.getElementsByTagName("link")[0].href = "css/black.css"
-        $(".txt").val("100")
+        console.log($(".div1").html("123a"))
+        //alert("111")
+
     })
 </Script>
 </body>
